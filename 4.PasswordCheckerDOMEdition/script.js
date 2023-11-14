@@ -17,20 +17,29 @@ const specialChars = [
   "'",
 ];
 
+const mssgs = {
+  weakPassw: "Is it in yet 🤨🤨🤨?Invalid password!",
+  passablePassw: "It could be worse 🤦‍♀️🤦‍♀️🤦‍♀️.Valid password!",
+  averagePassw: "Mediocrity,enemy of man and its member 😐😐😐.Valid password!",
+  aboveAveragePassw:
+    "One of the longer and stronger ones for sure 😃😃😃.Valid password!",
+  godTierPassw: "Oh my gawd its so behg and strong !!!😍😍😍.Valid password!",
+};
+
 const PasswInput = document.querySelector("input");
 const PasswSubmitBtn = document.querySelector("button");
-const PasswResult = document.querySelector("#PasswordResultText");
-
-console.log(PasswResult);
+const PasswResult = document.querySelector(".alert");
 
 PasswSubmitBtn.addEventListener("click", () => {
-  PasswResult.innerText = handlePasswStrength(
+  const result = handlePasswStrength(
     PasswInput.value,
     getSpecialCharAmount(PasswInput.value)
   );
+
+  handleAlertType(result);
 });
 
-getSpecialCharAmount = (password) => {
+const getSpecialCharAmount = (password) => {
   let specialCharAmount = 0;
 
   for (let passIndex = 0; passIndex < password.length; passIndex++) {
@@ -44,20 +53,43 @@ getSpecialCharAmount = (password) => {
   return specialCharAmount;
 };
 
+const handleClassnameAssign = (classname) => {
+  return PasswResult.classList[1]
+    ? PasswResult.classList.replace(PasswResult.classList[1], classname)
+    : PasswResult.classList.add(classname);
+};
+
+const handleAlertType = (result) => {
+  console.log(PasswResult.classList[1]);
+
+  if (result !== mssgs.weakPassw && result !== mssgs.godTierPassw) {
+    handleClassnameAssign("alert-info");
+    PasswResult.innerText = result;
+  } else if (result === mssgs.weakPassw) {
+    handleClassnameAssign("alert-danger");
+    PasswResult.innerText = result;
+  } else {
+    handleClassnameAssign("alert-success");
+    PasswResult.innerText = result;
+  }
+};
+
 const handlePasswStrength = (password, specialCharAmount) => {
   console.log(
-    `🕵🏻 Checking password '${password}',we know its ${password.length} chars long`
+    `🕵🏻 Checking password '${password}',we know its ${
+      password.length
+    } chars long  ${getSpecialCharAmount(password)}`
   );
 
   if (password.length >= 16) {
-    return "Valid password brah!.Dang its atleast 16 characters long.Nice!";
+    return mssgs.godTierPassw;
   } else if (password.length >= 12 && password.includes("-")) {
-    return "Valid password brah!.Dang its atleast 12 characters long and has `-` aswell!";
+    return mssgs.aboveAveragePassw;
   } else if (password.length >= 8 && specialCharAmount >= 1) {
-    return "Valid password brah!.Dang its atleast 8 characters long and has atleast one special chars!";
+    return mssgs.averagePassw;
   } else if (password.length >= 6 && specialCharAmount >= 2) {
-    return "Valid password brah!.Dang its atleast 6 characters long and has atleast two special chars!";
+    return mssgs.passablePassw;
   } else {
-    return "Invalid password brah!";
+    return mssgs.weakPassw;
   }
 };
