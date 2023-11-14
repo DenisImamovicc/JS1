@@ -26,10 +26,12 @@ const mssgs = {
   godTierPassw: "Oh my gawd its so behg and strong !!!😍😍😍.Valid password!",
 };
 
+//Dom assignments
 const PasswInput = document.querySelector("input");
 const PasswSubmitBtn = document.querySelector("button");
 const PasswResult = document.querySelector(".alert");
 
+//eventlisteners
 PasswSubmitBtn.addEventListener("click", () => {
   const result = handlePasswStrength(
     PasswInput.value,
@@ -37,6 +39,20 @@ PasswSubmitBtn.addEventListener("click", () => {
   );
 
   handleAlertType(result);
+});
+
+PasswInput.addEventListener("input", (e) => {
+  const result = handlePasswStrength(
+    PasswInput.value,
+    getSpecialCharAmount(PasswInput.value)
+  );
+
+  if (PasswInput.value === "") {
+    PasswResult.classList = "alert";
+    PasswResult.innerText = "";
+  } else {
+    handleAlertType(result);
+  }
 });
 
 const getSpecialCharAmount = (password) => {
@@ -60,8 +76,6 @@ const handleClassnameAssign = (classname) => {
 };
 
 const handleAlertType = (result) => {
-  console.log(PasswResult.classList[1]);
-
   if (result !== mssgs.weakPassw && result !== mssgs.godTierPassw) {
     handleClassnameAssign("alert-info");
     PasswResult.innerText = result;
