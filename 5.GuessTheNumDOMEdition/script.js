@@ -24,7 +24,7 @@ const message = {
   victory: (currUserTries) =>
     `You have beaten the Dommy Mommy overlord with ${currUserTries} ${handleTryGrammar(
       currUserTries
-    )}\nYour 🐔 is safe ....for now🤖🤖🤖🤖`,
+    )}\nYour 🐔 is safe ....for now😈😈😈`,
   continue: (currUserTries) =>
     `Guess again the number from 1 to 10 now.\nPress 0 to 🐔 out with your ${currUserTries} ${handleTryGrammar(
       currUserTries
