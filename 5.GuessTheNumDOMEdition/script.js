@@ -1,17 +1,12 @@
 let currUserTries = 0;
 
-
 const input = document.querySelector("#numInput")
 const submitGuessNum = document.querySelector("#submitGuessBtn")
 const restartGameBtn = document.querySelector("#restartBtn")
 const alertBox = document.querySelector("#alertBox")
 
-console.log(restartGameBtn);
-
 submitGuessNum.addEventListener("click",()=>{
-  const userGuess = Number(input.value)
-  console.log(userGuess);
-  handleGame(userGuess)
+  handleGame(Number(input.value))
 })
 
 restartGameBtn.addEventListener("click",()=>{
@@ -40,36 +35,31 @@ const handleFedback = (userGuess, robotGuess) =>
 const handleTryGrammar = (currUserTries) =>
   currUserTries === 1 ? "try" : "tries";
 
-const handleVictory = () => {
+const handleGameWin = () => {
   currUserTries++;
   alertBox.innerText = `${message.victory(currUserTries)}`
   restartGameBtn.style.visibility = 'visible';
   submitGuessNum.style.visibility = "hidden"
 };
 
-const handleDefeat = () => {
+const handleGameForfeit = () => {
   alertBox.innerText = `${message.defeat}`
   restartGameBtn.style.visibility = 'visible';
   submitGuessNum.style.visibility = "hidden"
 };
 
-const handleContinuation = (userGuess, robotGuess) => {
+const handleGameContinue = (userGuess, robotGuess) => {
     currUserTries++;
     alertBox.innerText = `${handleFedback(userGuess, robotGuess)} ${message.continue(currUserTries)}`
 };
 
 const compareGuesses = (userGuess, robotGuess) => {
-   console.log(
-     `User guessed: ${userGuess} and Robutt overlord guessed ${robotGuess}`
-   );
-
   userGuess === robotGuess
-    ? handleVictory()
-    : handleContinuation(userGuess, robotGuess);
+    ? handleGameWin()
+    : handleGameContinue(userGuess, robotGuess);
 };
 
 const restartGame = () => {
-  console.log("restart used");
   currUserTries = 0;
   restartGameBtn.style.visibility = "hidden"
   submitGuessNum.style.visibility = 'visible';
@@ -82,5 +72,5 @@ const handleGame = (Userguess) => {
 
  Userguess 
     ? compareGuesses(Userguess, CPU_NUM) 
-    : handleDefeat();
+    : handleGameForfeit();
 };
