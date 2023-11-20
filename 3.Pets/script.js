@@ -1,5 +1,4 @@
 
-// Array of pets
 const pets = [
     {
         name: "Mr Barksby",
@@ -28,19 +27,19 @@ const pets = [
             console.log(`Meowed times today: ${this.meowCounter}`);
         }
     },
-    // {
-    // 	hobbies: ["Be cute"],
-    // 	species: "Old kitten",
-    // 	age: 9,
-    // 	name: "Meow Sr",
-    // 	sound: "meooow!",
-    // 	meowCounter: 0,
-    // 	speak() { // same as writing "speak: function() {}"
-    // 		this.meowCounter++;
-    // 		console.log(this.sound);
-    // 		console.log(`Meowed times today: ${this.meowCounter}`);
-    // 	}
-    // }
+  {
+  	hobbies: ["Be cute"],
+  	species: "Old kitten",
+  	age: 9,
+  	name: "Meow Sr",
+  	sound: "meooow!",
+  	meowCounter: 0,
+  	speak() { // same as writing "speak: function() {}"
+  		this.meowCounter++;
+  		console.log(this.sound);
+  		console.log(`Meowed times today: ${this.meowCounter}`);
+  	}
+  }
 ];
 
 const getOwner = (pet) => 
@@ -50,14 +49,14 @@ const getHobbies = (pet) =>
     pet.hobbies.join(" and ")
 
 const addPetsList = (pet) => {
-    const petslist = document.getElementById("petsList")
-    petslist.innerHTML += 
+    const petsList = document.getElementById("petsList")
+    petsList.innerHTML += 
     `<hr>
         <li>${pet.name} is a ${pet.species} of ${pet.age} year(s) old.
             His owner is ${getOwner(pet)} and his favorite
             hobbies is to ${getHobbies(pet)}.
         </li>      
-     <hr>`
+     <br>`
 }    
 
 const displayPetsList = () => {
@@ -65,5 +64,3 @@ const displayPetsList = () => {
         addPetsList(pet)
      });
 }
-
-displayPetsList()
