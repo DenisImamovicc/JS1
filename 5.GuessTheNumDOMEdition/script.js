@@ -12,6 +12,8 @@ form.addEventListener("submit", (e) => {
   e.preventDefault()
 });
 
+
+
 const message = {
   defeat: "Pathetic!",
   default: "Guess tha number from 1 to 10 now or press 0 to 🐔 out!",
@@ -66,6 +68,7 @@ const restartGame = () => {
   submitGuessNum.removeAttribute("disabled")
   alertBox.innerText = "";
   input.value = "";
+  input.focus()
 };
 
 const handleGame = (Userguess) => {
