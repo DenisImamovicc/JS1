@@ -14,13 +14,13 @@
   </head>
   <body>
     <div id="container">
-      <div id="gameContainer">
+      <form id="gameContainer">
         <strong>
-          <label for="">👠Guess the number, D😈mmy m😈mmy edition👠</label>
+          <label for="numInput">👠Guess the number, D😈mmy m😈mmy edition👠</label>
         </strong>
         <hr />
         <div class="d-flex flex-column">
-          <input type="number" min="0" max="10" id="numInput" id="inputGuess" class="mb-2" placeholder="Enter your Num here...if you dare"/>
+          <input required type="number" min="0" max="10" id="numInput" id="inputGuess" class="mb-2" placeholder="Enter your Num here...if you dare"/>
           <button id="submitGuessBtn" class="mb-2">
             Submit your NUM to me,little slave! 👠😈😈
           </button>
@@ -29,7 +29,7 @@
           </button>
         </div>
         <span id="alertBox"></span>
-      </div>
+      </form>
     </div>
     <script src="script.js"></script>
     <script

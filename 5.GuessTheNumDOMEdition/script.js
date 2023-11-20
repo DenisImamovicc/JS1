@@ -1,12 +1,16 @@
 let currUserTries = 0;
-
+gameContainer
 const input = document.querySelector("#numInput");
+const form = document.querySelector("#gameContainer");
 const submitGuessNum = document.querySelector("#submitGuessBtn");
 const restartGameBtn = document.querySelector("#restartBtn");
 const alertBox = document.querySelector("#alertBox");
 
 submitGuessNum.addEventListener("click", () => handleGame(Number(input.value)));
 restartGameBtn.addEventListener("click", () => restartGame());
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+});
 
 const message = {
   defeat: "Pathetic!",
