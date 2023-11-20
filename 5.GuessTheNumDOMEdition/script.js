@@ -38,14 +38,14 @@ const compareGuesses = (userGuess, robotGuess) => {
 const handleGameWin = () => {
   currUserTries++;
   alertBox.innerText = `${message.victory(currUserTries)}`;
-  restartGameBtn.style.visibility = "visible";
-  submitGuessNum.style.visibility = "hidden";
+  restartGameBtn.removeAttribute("disabled")
+  submitGuessNum.setAttribute("disabled","")
 };
 
 const handleGameForfeit = () => {
   alertBox.innerText = `${message.defeat}`;
-  restartGameBtn.style.visibility = "visible";
-  submitGuessNum.style.visibility = "hidden";
+  restartGameBtn.removeAttribute("disabled")
+  submitGuessNum.setAttribute("disabled","")
 };
 
 const handleGameContinue = (userGuess, robotGuess) => {
@@ -58,14 +58,13 @@ const handleGameContinue = (userGuess, robotGuess) => {
 
 const restartGame = () => {
   currUserTries = 0;
-  restartGameBtn.style.visibility = "hidden";
-  submitGuessNum.style.visibility = "visible";
+  restartGameBtn.setAttribute("disabled","")
+  submitGuessNum.removeAttribute("disabled")
   alertBox.innerText = "";
   input.value = "";
 };
 
 const handleGame = (Userguess) => {
   let CPU_NUM = getRandomNumber();
-
   Userguess ? compareGuesses(Userguess, CPU_NUM) : handleGameForfeit();
 };

@@ -11,15 +11,26 @@
     flex-direction: column;
 }
 
-
-
 #gameContainer{
     padding: 1rem;
     border: 2px solid violet;
     border-radius: 1rem;
 }
 
-#restartBtn{
-    visibility: hidden;
+#submitGuessBtn{
+    border-radius: 1rem;
+    border-color: violet;
 }
 
+#submitGuessBtn:hover{
+    background-color: white;
+}
+
+#restartBtn:hover{
+    background-color: white;
+}
+
+#restartBtn{
+    border-radius: 1rem;
+    border-color: violet;
+}
