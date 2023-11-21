@@ -3,3 +3,8 @@
     background-color: chartreuse;
     border: 3px green dashed;
 }
+
+#todo{
+    display: flex;
+    justify-content: space-between;
+}
