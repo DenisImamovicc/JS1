@@ -24,11 +24,7 @@ const todos = [
 
 formCreateTodoEl.addEventListener("submit", (e) => {
   e.preventDefault();
-
   const newTodoTitle = inputNewTodoTitleEl.value;
-  console.log(checkDupes(newTodoTitle));
-
-
 
   if (newTodoTitle === "" || checkDupes(newTodoTitle)) {
     return alert("Lazy boy!,you can't have nothing todo.*whipped noises*");
@@ -47,12 +43,7 @@ formCreateTodoEl.addEventListener("submit", (e) => {
 });
 
 todolistEl.addEventListener("click", (e) => toggleTodoCompletion(e.target))
-
-todolistEl.addEventListener("click", (e) => {
-  e.target.id === "deleteBtn"
-    ? removeTodo(e.target.parentElement)
-    : ""
-})
+todolistEl.addEventListener("click", (e) => e.target.id === "deleteBtn" ? removeTodo(e.target.parentElement): "")
 
 const handleClassnameAssign = (el, classname) => {
   return el.classList[1]
