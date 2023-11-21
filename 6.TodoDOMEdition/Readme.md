@@ -10,7 +10,7 @@ Använd vår nya kompis .find() för att hitta rätt todo, ändra dess completed
  
 Använd event-bubbling, dvs sätt click-handlern på ul!
  
-### Steg 2.5 - Toggla en todo []
+### Steg 2.5 - Toggla en todo [x]
 En todo ska kunna växla mellan att vara avklarad och ej klar. 
 Dvs om den är true ska den ändras till false, och om den är false ska den ändras till true.
  

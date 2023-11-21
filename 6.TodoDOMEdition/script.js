@@ -47,13 +47,12 @@ formCreateTodoEl.addEventListener("submit", (e) => {
 });
 
 todolistEl.addEventListener("click", (e) => {
-  const completedTodo = e.target
-  handleClassnameAssign(completedTodo,"completed")
+  const chosenTodo = e.target
+  handleClassnameAssign(chosenTodo,"completed")
 
    todos.find((todo) =>{
-      if(todo.title === completedTodo.innerText) {
-        todo.completed = true
-        console.log(todo);
+      if(todo.title === chosenTodo.innerText) {
+        return todo.completed = !todo.completed
       }
    })
   console.log(e,todos);
