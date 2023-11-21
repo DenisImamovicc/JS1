@@ -46,10 +46,30 @@ formCreateTodoEl.addEventListener("submit", (e) => {
 	inputNewTodoTitleEl.value = "";
 });
 
+todolistEl.addEventListener("click", (e) => {
+  const completedTodo = e.target
+  handleClassnameAssign(completedTodo,"completed")
+
+   todos.find((todo) =>{
+      if(todo.title === completedTodo.innerText) {
+        todo.completed = true
+        console.log(todo);
+      }
+   })
+  console.log(e,todos);
+});
+
+const handleClassnameAssign = (el,classname) => {
+  return el.classList[1]
+    ? el.classList.remove(classname)
+    : el.classList.add(classname);
+};
+
 
 const renderTodos = () => {
 	todolistEl.innerText = "";
   const sortedTodos = sortTodosAlphabetically(todos)
+
 	sortedTodos.forEach((todo) => {
 		/*
 		const cssCompleted = todo.completed ? "completed" : "";
@@ -88,7 +108,9 @@ const sortTodosAlphabetically = (todolist) => {
   })
 }
 
-// Render the initial representation of the todos-array
-renderTodos();
+const handleTodoCompletion = () => {
 
+}
+
+renderTodos();
 console.log()
