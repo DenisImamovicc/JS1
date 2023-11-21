@@ -14,6 +14,6 @@ Använd event-bubbling, dvs sätt click-handlern på ul!
 En todo ska kunna växla mellan att vara avklarad och ej klar. 
 Dvs om den är true ska den ändras till false, och om den är false ska den ändras till true.
  
-### ⭐️ Steg 3 - Radera en todo []
+### ⭐️ Steg 3 - Radera en todo [x]
 Lägg till funktionalitet för att radera en todo 
 när man klickar på en Delete-knapp (som ska finnas på varje todo).

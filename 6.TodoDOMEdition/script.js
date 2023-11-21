@@ -1,7 +1,6 @@
 const todolistEl = document.querySelector("#todolist");
 const formCreateTodoEl = document.querySelector("#formCreateTodo");
 const inputNewTodoTitleEl = document.querySelector("#inputNewTodoTitle");
-const deleteTodoBtn =  document.querySelector("#deleteBtn")
 
 // List of todos
 const todos = [
@@ -27,8 +26,11 @@ formCreateTodoEl.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const newTodoTitle = inputNewTodoTitleEl.value;
+  console.log(checkDupes(newTodoTitle));
 
-  if (newTodoTitle === "") {
+
+
+  if (newTodoTitle === "" || checkDupes(newTodoTitle)) {
     return alert("Lazy boy!,you can't have nothing todo.*whipped noises*");
   }
 
@@ -46,10 +48,37 @@ formCreateTodoEl.addEventListener("submit", (e) => {
 
 todolistEl.addEventListener("click", (e) => toggleTodoCompletion(e.target))
 
+todolistEl.addEventListener("click", (e) => {
+  e.target.id === "deleteBtn"
+    ? removeTodo(e.target.parentElement)
+    : ""
+})
+
 const handleClassnameAssign = (el, classname) => {
   return el.classList[1]
     ? el.classList.remove(classname)
     : el.classList.add(classname);
+};
+
+const checkDupes = (inputTitle) => {
+  return todos.find((todo) => {
+    if (inputTitle === todo.title) {
+      return true
+    } else {
+      return false
+    }
+  })
+};
+
+const removeTodo = (todo) => {
+  const chosenTitle = todo.childNodes[0].textContent.trim()
+  todos.find((todo,index) => {
+    if (todo.title === chosenTitle) {
+      return todos.splice(index,1)
+    }
+  });
+  console.log(todos);
+  return todo.remove()
 };
 
 const toggleTodoCompletion = (chosenTodo) => {
@@ -90,6 +119,5 @@ const sortTodosAlphabetically = (todolist) => {
     }
   });
 };
-
 
 renderTodos();
