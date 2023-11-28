@@ -17,7 +17,7 @@ Obs: Det ska fortfarande bara finnas en enda array med todos, inte två. Single 
  
 Tips! Använd en av de nya Higher Order Array Methods vi gått igenom.
  
-### ⭐️ Steg 2 - Beräkna ID vid skapande av ny todo []
+### ⭐️ Steg 2 - Beräkna ID vid skapande av ny todo [X]
 När en ny todo skapas, se om du kan räkna ut det högsta id bland befintliga todos (finns flera sätt att göra det på, ett sätt är att använda .map() följt av Math.max() och ett annat är att använda .reduce()). Ge den nya todon som skapas ett id som är det högsta id + 1.
  
 Exempel: Om det högsta id som finns i array:en är 3 så ska den nya todon man skapar få id 4.

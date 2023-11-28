@@ -19,6 +19,7 @@ formCreateTodoEl.addEventListener("submit", (e) => {
   }
 
   const newTodo = {
+    id: createNewTodoID(todos),
     title: newTodoTitle,
     completed: false,
   };
@@ -30,12 +31,16 @@ formCreateTodoEl.addEventListener("submit", (e) => {
   inputNewTodoTitleEl.value = "";
 });
 
-unfinishedTodoListEl.addEventListener("click", (e) => toggleTodoCompletion(e.target));
+unfinishedTodoListEl.addEventListener("click", (e) =>
+  toggleTodoCompletion(e.target)
+);
 unfinishedTodoListEl.addEventListener("click", (e) =>
   e.target.id === "deleteBtn" ? removeTodo(e.target.parentElement) : ""
 );
 
-finishedTodoListEl.addEventListener("click", (e) => toggleTodoCompletion(e.target));
+finishedTodoListEl.addEventListener("click", (e) =>
+  toggleTodoCompletion(e.target)
+);
 finishedTodoListEl.addEventListener("click", (e) =>
   e.target.id === "deleteBtn" ? removeTodo(e.target.parentElement) : ""
 );
@@ -44,6 +49,18 @@ const handleClassnameAssign = (el, classname) => {
   return el.classList[1]
     ? el.classList.remove(classname)
     : el.classList.add(classname);
+};
+
+const createNewTodoID = (todolist) => {
+  if (todolist.length) {
+    const id = todolist
+      .map((todo) => todo.id)
+      .sort((a, b) => a - b);
+
+    return id[id.length - 1] + 1;
+  } else {
+    return 1;
+  }
 };
 
 const checkDupes = (inputTitle) => {
@@ -63,7 +80,6 @@ const removeTodo = (todo) => {
       return todos.splice(index, 1);
     }
   });
-  console.log(todos);
   todo.remove();
   renderTodos();
 };
@@ -91,14 +107,14 @@ const renderTodos = () => {
     if (completedTodo) {
       finishedTodoListEl.innerHTML += `
 			<li class="list-group-item ${completedTodo}" id="todo">
-				${todo.title}
+				${todo.title} 
         <button class="" id="deleteBtn">🚮</button>
 			</li>
 		`;
     } else {
       unfinishedTodoListEl.innerHTML += `
 			<li class="list-group-item ${completedTodo}" id="todo">
-				${todo.title}
+				${todo.title} 
         <button class="" id="deleteBtn">🚮</button>
 			</li>
 		`;
