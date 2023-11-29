@@ -24,5 +24,5 @@ Exempel: Om det högsta id som finns i array:en är 3 så ska den nya todon man 
  
 Tänk på att våra todos inte kommer vara sorterade efter id.
  
-### 🌟 Steg 3 - Data attribut []
+### 🌟 Steg 3 - Data attribut [X]
 Med kunskapen från “Using data attributes” ovan, se om du kan skriva om 30-better-todos till att rendera ut todo:ns ID på <li>-elementet och när man klickar på en todo så hämta ut detta ID, använd .find() att hitta den aktuella todo:n och toggla den.
