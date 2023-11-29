@@ -3,7 +3,6 @@ const unfinishedTodoListEl = document.querySelector("#unfinishedTodoList");
 const formCreateTodoEl = document.querySelector("#formCreateTodo");
 const inputNewTodoTitleEl = document.querySelector("#inputNewTodoTitle");
 
-// List of todos
 const todos = [
   { id: 1, title: "Learn basic JavaScript", completed: true },
   { id: 2, title: "Learn Array Methods", completed: false },
@@ -14,7 +13,7 @@ formCreateTodoEl.addEventListener("submit", (e) => {
   e.preventDefault();
   const newTodoTitle = inputNewTodoTitleEl.value;
 
-  if (newTodoTitle === "" || checkDupes(newTodoTitle)) {
+  if (newTodoTitle === "") {
     return alert("Lazy boy!,you can't have nothing todo.*whipped noises*");
   }
 
@@ -63,16 +62,6 @@ const createNewTodoID = (todolist) => {
   }
 };
 
-const checkDupes = (inputTitle) => {
-  return todos.find((todo) => {
-    if (inputTitle === todo.title) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-};
-
 const removeTodo = (todo) => {
   const chosenTitle = todo.childNodes[0].textContent.trim();
   todos.find((todo, index) => {
@@ -85,9 +74,9 @@ const removeTodo = (todo) => {
 };
 
 const toggleTodoCompletion = (chosenTodo) => {
-  const chosenTodoTitle = chosenTodo.childNodes[0].textContent.trim();
+  const chosenTodoId = Number(chosenTodo.dataset.id)
   todos.find((todo) => {
-    if (todo.title === chosenTodoTitle) {
+    if (todo.id === chosenTodoId) {
       handleClassnameAssign(chosenTodo, "completed");
       return (todo.completed = !todo.completed);
     }
@@ -106,14 +95,16 @@ const renderTodos = () => {
 
     if (completedTodo) {
       finishedTodoListEl.innerHTML += `
-			<li class="d-flex justify-content-between list-group-item ${completedTodo}" id="${todo.id}">
+			<li class="d-flex justify-content-between list-group-item ${completedTodo}" 
+      data-id="${todo.id}">
 				${todo.title} 
         <button class="" id="deleteBtn">🚮</button>
 			</li>
 		`;
     } else {
       unfinishedTodoListEl.innerHTML += `
-			<li class="d-flex justify-content-between list-group-item ${completedTodo}" id="${todo.id}">
+			<li class="d-flex justify-content-between list-group-item ${completedTodo}" 
+      data-id="${todo.id}">
 				${todo.title} 
         <button class="" id="deleteBtn">🚮</button>
 			</li>
