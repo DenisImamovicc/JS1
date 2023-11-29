@@ -14,7 +14,7 @@ formCreateTodoEl.addEventListener("submit", (e) => {
   const newTodoTitle = inputNewTodoTitleEl.value;
 
   if (newTodoTitle === "") {
-    return alert("Lazy boy!,you can't have nothing todo.*whipped noises*");
+    return alert("Lazy boy,you can't have nothing todo!!!*whipped noises*");
   }
 
   const newTodo = {
@@ -51,15 +51,11 @@ const handleClassnameAssign = (el, classname) => {
 };
 
 const createNewTodoID = (todolist) => {
-  if (todolist.length) {
-    const id = todolist
-      .map((todo) => todo.id)
-      .sort((a, b) => a - b);
-
-    return id[id.length - 1] + 1;
-  } else {
-    return 1;
-  }
+  const id = todolist.map((todo) => todo.id)
+  
+  return todolist.length
+  ? Math.max(...id) + 1
+  : 1
 };
 
 const removeTodo = (todo) => {
@@ -93,25 +89,22 @@ const renderTodos = () => {
   sortedTodos.forEach((todo) => {
     const completedTodo = todo.completed ? "completed" : "";
 
-    if (completedTodo) {
-      finishedTodoListEl.innerHTML += `
-			<li class="d-flex justify-content-between list-group-item ${completedTodo}" 
-      data-id="${todo.id}">
-				${todo.title} 
-        <button class="" id="deleteBtn">🚮</button>
-			</li>
-		`;
-    } else {
-      unfinishedTodoListEl.innerHTML += `
-			<li class="d-flex justify-content-between list-group-item ${completedTodo}" 
-      data-id="${todo.id}">
-				${todo.title} 
-        <button class="" id="deleteBtn">🚮</button>
-			</li>
-		`;
-    }
+    completedTodo
+    ? renderHtmlTodoTemplate(finishedTodoListEl,todo,completedTodo)
+    : renderHtmlTodoTemplate(unfinishedTodoListEl,todo,completedTodo)
   });
 };
+
+const renderHtmlTodoTemplate = (el,todo,className) => {
+  const template = `
+  <li class="d-flex justify-content-between list-group-item ${className}" 
+  data-id="${todo.id}">
+    ${todo.title} 
+    <button class="" id="deleteBtn">🚮</button>
+  </li>
+`;
+return el.innerHTML += template
+}
 
 const sortTodosAlphabetically = (todolist) => {
   return todolist.sort((a, b) => {
