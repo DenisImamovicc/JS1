@@ -1,0 +1,13 @@
+.completed{
+    text-decoration: line-through;
+    background-color: chartreuse;
+    border: 3px green dashed;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+#deleteBtn{
+    text-decoration:none;
+}
