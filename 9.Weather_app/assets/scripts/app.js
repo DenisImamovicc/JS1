@@ -22,6 +22,9 @@ const renderCurrentWeather = (conditions) => {
 				<span id="windspeed">${conditions.wind.speed}</span>
 				m/s
 			</p>
+            <ul class="conditions">
+                <li><img src="https://openweathermap.org/img/wn/${conditions.weather[0].icon}@2x.png"  alt="${conditions.weather[0].main}" title="${conditions.weather[0].description}" id="weatherRelations"></li>
+            </ul>
 		</div>
 	`;
 }
@@ -40,11 +43,15 @@ document.querySelector("#search-form").addEventListener("submit", async (e) => {
 	console.log(`Searching for city "${city}"`);
     document.querySelector("#forecast").className = "card text-black hide"
     try {
+        document.querySelector("#loadingIcon").className = "spinner-border"
         const data = await getCurrentWeather(city);
+        document.querySelector("#loadingIcon").className = "spinner-border hide"
+
         renderCurrentWeather(data)
         console.log(`Current weather conditions in "${city}":`, data);
         document.querySelector("#forecast").className = "card text-black"
     } catch (error) {
+        document.querySelector("#loadingIcon").className = "spinner-border hide"
         renderErrMssg(city)
     }
 });

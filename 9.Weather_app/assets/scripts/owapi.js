@@ -3,7 +3,7 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 
 
-const FAKE_SLOW_API = true;
+const FAKE_SLOW_API = false;
 const FAKE_SLOW_API_DELAY = 3000;
 
 /**

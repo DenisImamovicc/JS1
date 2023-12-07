@@ -10,14 +10,14 @@ Glöm inte kolla på dokumentationen för API:ets endpoint: <https://openweather
 
 Hantera att en stad inte går att hitta och visa ett bättre fel på sidan. Förslagsvis med hjälp av en Bootstrap Alert.
 
-## 3. Lägg in en loading-spinner
+## 3. Lägg in en loading-spinner [x]
 
 Visa en loading-spinner medan man väntar på resultat. Loading-spinner bör även visas om man gör en ny sökning (och därmed ska det gamla vädret döljas).
 
 Förslag på spinners: <https://tobiasahlin.com/spinkit/>
 Bootstrap Spinners: <https://getbootstrap.com/docs/5.3/components/spinners/>
 
-## 4. Visa väderförhållanden
+## 4. Visa väderförhållanden [x]
 
 Visa väderförhållanden inkl. ikoner i en osorterad lista med klassen `conditions`, där varje condition är en `li` med en `img` för ikonen. Lägg gärna in `description` som bildens `title`.
 
