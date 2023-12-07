@@ -32,10 +32,10 @@ Exempel med styling som ni kan lägga efter `p.wind`:
 </ul>
 ```
 
-## 5. Byt ut card-image mot `day.svg`/`night.svg` beroende på om det är efter solnedgång eller före soluppgång
+## 5. Byt ut card-image mot `day.svg`/`night.svg` beroende på om det är efter solnedgång eller före soluppgång [x]
 
 Kolla på `sys.sunrise` och `sys.sunset` och jämför med nuvarande tid.
 
-## 6. Visa "färskhet"
+## 6. Visa "färskhet"  [x]
 
 Visa hur länge sedan det var som väderrapporten uppdaterades. Använd gärna Date-klassen och `.toLocaleString()`!

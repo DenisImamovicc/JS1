@@ -20,14 +20,14 @@
 		<div id="search-wrapper">
 			<form id="search-form">
 				<div class="input-group">
-					<input type="text" id="query" class="form-control" placeholder="Enter city to search for" aria-label="City" aria-details="Search for city to show current weather for.">
+					<input type="text" id="query" class="form-control" placeholder="Enter city to search for" aria-label="City" aria-details="Search for city to show current weather for." autocomplete="country-name">
 					<button type="submit" class="btn btn-success">🔍</button>
 				</div>
 			</form>
 		</div>
 
 		<div id="forecast" class="card text-black hide">
-			<img src="assets/images/forecast-banner.png" class="card-img-top">
+			<img src="assets/images/forecast-banner.png" class="card-img-top" id="dayornightbg">
 			<div class="card-body">
 				<h5 class="card-title" id="location">
 					<span id="city">City</span>,
